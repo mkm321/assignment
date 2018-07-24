@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace AssignmentTavisca
 {
-    /*enum AccountType
-    {
-        Savings,
-        Current,
-        Dmat
-    }*/
+    // Structure contaning all the account details variable
     struct AccountDetails
     {
         public long accountNumber;
@@ -23,6 +18,7 @@ namespace AssignmentTavisca
     }
     class Program
     {
+        //Getting index of the object matched through account number
         static int searchAccountId(AccountDetails[] obj)
         {
             Console.WriteLine("Enter Account Number :- ");
@@ -36,6 +32,7 @@ namespace AssignmentTavisca
             }
             return 0;
         }
+        //displaying account details of a particular user
         static void checkAccountDetails(AccountDetails[] obj)
         {
             int index = searchAccountId(obj);
@@ -45,6 +42,7 @@ namespace AssignmentTavisca
             Console.WriteLine("Account Holder's phone number is :- " + obj[index].phone);
             Console.WriteLine("Balance is :- " + obj[index].balance);
         }
+        //function to add money to the user's account
         static void depositMoney(AccountDetails[] obj)
         {
             int index = searchAccountId(obj);
@@ -53,6 +51,7 @@ namespace AssignmentTavisca
             obj[index].balance += depositAmount;
             Console.WriteLine("Current balance is :- {0}", obj[index].balance);
         }
+        //function to withdraw money from a particular account!
         static void withdrawMoney(AccountDetails[] obj)
         {
             int index = searchAccountId(obj);
@@ -101,6 +100,7 @@ namespace AssignmentTavisca
             }
             Console.WriteLine("Current balance is :- {0}", obj[index].balance);
         }
+        //Calculating interest of a particular account!
         static void calculateInterest(AccountDetails[] obj)
         {
             int index = searchAccountId(obj);
@@ -124,7 +124,9 @@ namespace AssignmentTavisca
         static void Main(string[] args)
         {
             Console.WriteLine("Kindly add 5 Different accounts information! ");
+            //Created array of objects
             AccountDetails[] structObject = new AccountDetails[6];
+            //getting account details for different object
             for(int index = 1; index <= 5; index++)
             {
                 Console.WriteLine("Entering {0} Account Details", index);
@@ -142,9 +144,10 @@ namespace AssignmentTavisca
                 structObject[index].balance = int.Parse(Console.ReadLine());
                 Console.WriteLine();
             }
-            int loopStopper = 1;
+            int loopStopper = 1; // To stop the do while loop!
             do
             {
+                //Asking user to press particular key to perform paticular operations
                 Console.Write("Enter \n1 To check Account Details\n2 To deposit money\n3 To withdraw money\n4 Calulate Interest on an account! ");
                 int choice = int.Parse(Console.ReadLine());
                 switch (choice)
